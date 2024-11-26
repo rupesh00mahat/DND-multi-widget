@@ -1,10 +1,17 @@
 import Example from "@/components/example";
+import WeatherContextProvider from "@/store/weather-context";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 export default function Home() {
+
+  const queryClient = new QueryClient();
+
   return (
     <div
-      className={``}
+      className={`overflow-hidden`}
     >
-     <Example/>
+    <QueryClientProvider client={queryClient}>
+    <Example/>
+    </QueryClientProvider>
     </div>
   );
 }

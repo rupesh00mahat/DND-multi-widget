@@ -11,13 +11,13 @@ import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
+  reactSortingStrategy
 } from '@dnd-kit/sortable';
 
 import {SortableItem} from './SortableItem.jsx';
 
 export default function Example() {
-  const [items, setItems] = useState([1, 2, 3]);
+  const [items, setItems] = useState([1]);
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -28,7 +28,7 @@ export default function Example() {
   return (
   <>
   
-  <div className='p-2 border border-dashed w-40 border-black grid grid-cols-3 gap-4'>
+  <div className='p-2 border border-dashed font-mono  border-black grid gap-4'>
   <DndContext 
       sensors={sensors}
       collisionDetection={closestCenter}
@@ -36,7 +36,7 @@ export default function Example() {
     >
       <SortableContext 
         items={items}
-        strategy={verticalListSortingStrategy}
+        strategy={reactSortingStrategy}
       >
         {items.map(id => <SortableItem key={id} id={id} />)}
       </SortableContext>

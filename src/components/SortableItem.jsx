@@ -1,6 +1,8 @@
 import React from 'react';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
+import WeatherComponent from "@/components/WeatherComponent"
+import WeatherContextProvider from '@/store/weather-context';
 
 export function SortableItem(props) {
   const {
@@ -17,8 +19,10 @@ export function SortableItem(props) {
   };
   
   return (
-    <div className='p-3 border border-black ' ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      {props.id}
+    <div className='shadow-2xl rounded-lg ' ref={setNodeRef} style={style} {...attributes} {...listeners}>
+      <WeatherContextProvider>
+      <WeatherComponent/>
+      </WeatherContextProvider>
     </div>
   );
 }

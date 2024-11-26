@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/droppable.jsx", "src/components/draggable.jsx", "src/components/example.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/droppable.jsx", "src/components/draggable.jsx", "src/components/example.jsx", "src/store/weather-context.jsx"],
   "exclude": ["node_modules"]
 }
