@@ -1,60 +1,28 @@
-import React, {useState} from 'react';
-import {
-  DndContext, 
-  closestCenter,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  reactSortingStrategy
-} from '@dnd-kit/sortable';
+import React from 'react';
 
-import {SortableItem} from './SortableItem.jsx';
+import WeatherContextProvider from '@/store/weather-context.tsx';
+import WeatherComponent from './WeatherComponent.jsx';
+import RandomQuote from './random-quote.tsx';
 
 export default function Example() {
-  const [items, setItems] = useState([1]);
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
+  
 
   return (
   <>
   
-  <div className='p-2 border border-dashed font-mono  border-black grid gap-4'>
-  <DndContext 
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-    >
-      <SortableContext 
-        items={items}
-        strategy={reactSortingStrategy}
-      >
-        {items.map(id => <SortableItem key={id} id={id} />)}
-      </SortableContext>
-    </DndContext>
+  <div className='p-2  font-mono  border-black grid gap-4'>
+  <div className='shadow-2xl rounded-lg ' >
+      <WeatherContextProvider>
+      <WeatherComponent/>
+      </WeatherContextProvider>
+      
+    </div>
+    <div className="random-quote">
+    <RandomQuote/>
+    </div>
   </div>
   </>
   );
   
-  function handleDragEnd(event) {
-    const {active, over} = event;
-    
-    if (active.id !== over.id) {
-      setItems((items) => {
-        const oldIndex = items.indexOf(active.id);
-        const newIndex = items.indexOf(over.id);
-        
-        return arrayMove(items, oldIndex, newIndex);
-      });
-    }
-  }
+
 }

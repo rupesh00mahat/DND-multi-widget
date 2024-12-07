@@ -8,7 +8,6 @@ function WeatherComponent() {
     const {state} = useContext(WeatherContext);
     const {weatherData} = state;
 
-    console.log(weatherData)
 
 useEffect(()=>{
    if(weatherData && weatherData.sys.sunset){
@@ -31,7 +30,7 @@ useEffect(()=>{
             <div className="component-wrapper flex justify-between items-end pt-20">
                 <div className="weather-info flex flex-col items-start">
                     <span>{weatherData && weatherData.weather[0].main}</span>
-                    <h3 className='text-[70px] p-0 font-extralight'>{weatherData && parseFloat(weatherData.main.temp).toFixed(1)}deg</h3>
+                    <h3 className='text-[70px] p-0 font-extralight'>{weatherData && parseFloat(weatherData.main.temp).toFixed(1)}°</h3>
                     <p className='text-lg'>{weatherData && weatherData.name}</p>
                 </div>
                 <div className="time-and-day flex flex-col items-end">
