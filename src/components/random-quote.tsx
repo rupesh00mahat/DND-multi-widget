@@ -10,7 +10,7 @@ function RandomQuote() {
     })
     console.log(data);
     return (
-        <div className='p-4 rounded-md bg-blue-400 w-1/4'>
+        <div className='p-4 rounded-md bg-blue-400'>
             {data &&  (<><span className='text-white'>{data.data.quote}</span> -<span className='text-lg'> {data.data.author}</span></>)}
         </div>
     )
